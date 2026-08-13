@@ -33,11 +33,12 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: "1.26.0"
+          
+      - name: Check formatting
+        run: test -z $(go fmt ./...)
 
-      - name: Style check
-        run: test -z "$(go fmt ./...)"
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
 
-      - name: Linter check
-        uses: dominikh/staticcheck-action@v1
-        with:
-          version: "latest"
+      - name: Run staticcheck
+        run: staticcheck ./...
