@@ -28,3 +28,8 @@ jobs:
     steps:
       - name: Style check
         run: test -z $(go fmt ./...)
+
+      - name: Linter check
+        uses: dominikh/staticcheck-action@v1
+        with:
+          version: "latest"
