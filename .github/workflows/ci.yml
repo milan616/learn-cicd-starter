@@ -33,9 +33,9 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: "1.26.0"
-          
+
       - name: Style check
-        run: test -z $(go fmt ./...)
+        run: test -z "$(go fmt ./...)"
 
       - name: Linter check
         uses: dominikh/staticcheck-action@v1
