@@ -97,6 +97,10 @@ func main() {
 	}
 
 	portNum, err := strconv.Atoi(port)
+	if err != nil {
+		log.Fatal("Failed to sanitize port number")
+		return
+	}
 
 	log.Printf("Serving on port: %d\n", portNum)
 	log.Fatal(srv.ListenAndServe())
